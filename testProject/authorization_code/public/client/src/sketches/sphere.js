@@ -1,0 +1,4 @@
+///////////////////////////////////////////////////////
+//Sphere class - draws a sphere that can connect to another of it's type
+
+

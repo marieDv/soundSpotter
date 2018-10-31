@@ -1,0 +1,244 @@
+.bg {
+
+
+  /*filter: brightness(1) contrast(1.8) opacity(1) saturate(2.6);*/
+/*filter:brightness(1.1) contrast(1.8) opacity(1) saturate(7.6);*/
+  background:linear-gradient(to bottom, #000328 40%, #000000 100%);
+
+  background: linear-gradient(to bottom, #ded6c7 40%, #71d1fd 100%);
+  height:100vh;
+  width:100%;
+  position: absolute;
+
+}
+.indiegold {
+  background: linear-gradient(to bottom, #e99e11 60%, #cf5b05 100%);
+  background: linear-gradient(to bottom, #ffcd00 60%, #fb964a 100%);
+  background: linear-gradient(to bottom, #8e95f2 60%, #c5efff 100%);
+  /*background: linear-gradient(to bottom, #f4c263 60%, #c67233 100%);*/
+}
+.summervibes {
+  background: linear-gradient(to bottom, #ded6c7 40%, #71d1fd 100%);
+}
+.rapgod {
+  background: linear-gradient(to bottom, #E91E63 60%, #004464 100%);
+  background: linear-gradient(to bottom, #E91E63 50%, #d0467c 75%, #652862 100%);
+  background: #1d1d1d;
+}
+
+
+
+.setTheme {
+  position: absolute;
+  z-index: 10;
+  bottom: 5vh;
+  right: 4%;
+
+}
+.setTheme_theme {
+  font-family: Avenir;
+  letter-spacing: 5px;
+  font-size: 1rem;
+  color: white;
+  list-style: none;
+  text-align:left;
+  cursor: pointer;
+
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  width: 100%;
+  height:100vh;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+  filter: brightness(0.8) contrast(1.8) opacity(1) saturate(1.6);
+  filter: brightness(0.8) contrast(1.4) opacity(1) saturate(1.2);
+}
+button {
+  background: #3f3f3f;
+  /*border: 2px solid #fbf9ff;*/
+  padding: 15px;
+  color: #fbf9ff;
+  letter-spacing: 4px;
+  font-family: "Helvetica Neue";
+  text-transform: lowercase;
+  border-radius: 30px;
+  cursor: pointer;
+  display: block !important;
+  border: none;
+  margin: 5px;
+
+}
+button:first-child {
+  margin-right: 20px;
+}
+div, button {
+  display: inline;
+}
+
+.text-login {
+  text-decoration: none;
+  font-weight: 800;
+  margin: 8px 0 8px 0;
+}
+
+
+
+#genresBox{
+  position: absolute;
+  height:100vh;
+  width: 100%;
+  top:-7vh;
+  text-align: center;
+  /*pointer-events: none;*/
+  /*background-color: tomato;*/
+
+
+  width: 54%;
+  text-align: center;
+  /* pointer-events: none; */
+
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+
+}
+.greetings {
+  /*position: absolute;*/
+  left:5%;
+  top: 29vh;
+}
+.headline-xxl {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 18px;
+  color: #3f3f3f;
+  font-size: 5rem;
+  font-weight: 800;
+  margin-top: 62px;
+  margin-top: 48px;
+  line-height: 0;
+}
+
+.t-indent {
+  margin-left: -19%;
+}
+.headline-xxl-sub {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 10px;
+  color: #3f3f3f;
+  font-size:1rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.headline-xl {
+  font-family: "Helvetica Neue", sans-serif;
+  letter-spacing: 9px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 200;
+  text-shadow: #c4c4c4 0px 0px 2px;
+}
+.headline-lg {
+  font-family: "Libre Baskerville", sans-serif;
+  letter-spacing: 5px;
+  color: #ffffff;
+  font-weight: 200;
+  font-size: 0.7rem;
+
+}
+
+.favArtist {
+  font-size: 1.4rem;
+  letter-spacing: 6px;
+  font-weight: 700;
+  list-style: none;
+  line-height: 1.1;
+}
+.emphasized {
+  font-weight: 600;
+}
+
+.pos-absolute {
+  position: absolute;
+  /*width: 100%;*/
+  /*text-align: center;*/
+  text-align: left;
+  bottom: 6vh;
+  /*right:4vh;*/
+  left: 12%;
+  bottom: 26vh;
+}
+.pos-absolute-start {
+  position: absolute;
+  /*width: 100%;*/
+  /*text-align: center;*/
+  text-align: center;
+  bottom:32vh;
+  width: 100%;
+  z-index:30;
+
+}
+.currentTheme {
+  font-weight: 900;
+}
+.blurVignette {
+  /*width: 100%;*/
+  height:100vh;
+  pointer-events: none;
+  position: absolute;
+  z-index:100;
+  /*opacity:0.3;*/
+  /*filter: blur(200px);*/
+
+}
+
+.canvas-blur {
+  filter: blur(5px);
+}
+
+span.genre {
+  text-indent: 0;
+  left: 38%;
+  width: 150px !important;
+  height: 30px !important;
+}
+.genre {
+  color: rgba(142, 142, 142, 0.99);
+  color: rgba(238, 238, 238, 0.99);
+  font-family: "Archivo Narrow", sans-serif;
+  /*font-size: 5px;*/
+  letter-spacing: 1px;
+  top: 58.8vh;
+  font-weight: 800;
+  transition: opacity .6s;
+  font-size: 0.8rem;
+
+
+}
+.genreTwo{
+  color: rgba(238, 238, 238, 0.99);
+  font-family: "Archivo Narrow", sans-serif;
+  letter-spacing: 1px;
+  top: 58.8vh;
+  font-weight: 800;
+  transition: opacity .6s;
+  left: 0;
+  font-size: 0.8rem;
+}
+
+.boldGenre {
+  font-size: 2rem !important;
+  /*color: #ffffff !important;*/
+}
+
+.tomato {
+  font-size: 1.9rem;
+}
