@@ -16,7 +16,6 @@ class Asteroids extends Component {
 
         for(let i=0; i<20; i++){
             this.createAsteroid(this.context.scene);
-            console.log("create?");
         }
 
         this.context.scene.add(group);
@@ -47,7 +46,7 @@ class Asteroids extends Component {
         counter++;
         mesh.rotation.x = (Math.random() * (20 - 90));
         group.add(mesh);
-        console.log(group);
+
 
 
     }

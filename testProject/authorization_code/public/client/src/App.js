@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
-import P5Wrapper from 'react-p5-wrapper';
 import sketch from './sketches/sketch';
-import Base from './threejs/Base';
-import Asteroids from './threejs/Asteroids';
-import Camera from './threejs/Camera';
-// import OrbitControls from 'expo-three-orbit-controls';
+import Canvas from './Canvas';
+import UserInfo from './UserInfo';
 import Spotify from 'spotify-web-api-js';
 
 const spotifyWebApi = new Spotify();
@@ -61,9 +58,6 @@ class App extends Component {
 
     }
 
-    updateDimensions() {
-        this.setState({width: window.innerWidth, height: window.innerHeight});
-    }
 
     componentWillMount() {
         this.updateDimensions();
@@ -81,8 +75,9 @@ class App extends Component {
         window.addEventListener("resize", this.updateDimensions);
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//////// CLICK EVENT LISTENER FOR TEXT ZOOM PER ARTISTS
+        /**
+         * event listener for text zoom
+         **/
         var items = null;
         if (this.state.topArtists) {
             items = this.state.topArtists;
@@ -104,22 +99,24 @@ class App extends Component {
         });
 
 
-        const script2 = document.createElement("script");
-        script2.src = "https://use.typekit.net/foobar.js";
-        script2.async = true;
-        document.body.appendChild(script2);
+        // const script2 = document.createElement("script");
+        // script2.src = "https://use.typekit.net/foobar.js";
+        // script2.async = true;
+        // document.body.appendChild(script2);
     }
 
-////////////////////////////////////////////////////////////////////////
-//init functions
+    /**
+     * called after each mount
+     **/
     init() {
 
         this.getTopArtists();
         this.toggleClasses();
     }
 
-////////////////////////////////////////////////////////////////////////
-//get has for access
+    /**
+     * save hash for access
+     **/
     getHashParams() {
         var hashParams = {};
         var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -132,8 +129,10 @@ class App extends Component {
         return hashParams;
     }
 
-////////////////////////////////////////////////////////////////////////
-//get currently playing track
+    /**
+     * get the track that the logged in user
+     * is currently playing
+     **/
     getNowPlaying() {
 
         spotifyWebApi.getMyCurrentPlaybackState()
@@ -147,21 +146,22 @@ class App extends Component {
             })
     }
 
-////////////////////////////////////////////////////////////////////////
-//safe favorite genres to two dimensional array
+    /**
+     * saves the favorite artists
+     * to a two dimensional array
+     **/
     printArtists(reprintMatches) {
 
         var string = "";
         var genres = "";
-        var rap = 0;
         var secArray = null;
         var secondArray = [];
 
-        //second user logged in … print second sphere info
+        //second user logged in -> print second sphere info
         if (this.state.sphereSwitch && this.state.returnGenres) {
 
             for (let key in Object.keys(sessionStorage)) {
-                console.log(Object.keys(sessionStorage)[key]);
+                // console.log(Object.keys(sessionStorage)[key]);
                 if ((Object.keys(sessionStorage)[key].includes("saveFirstUserArtists"))
                     && !(Object.keys(sessionStorage)[key].includes(this.state.currentUser.name))
                 ) {
@@ -196,7 +196,6 @@ class App extends Component {
 
                         switched === false ? (artistsArrayName = mTopArtists[i].name) : (artistsArrayName = mTopArtists[i]);
                         string += "<li class='favArtist'>" + artistsArrayName
-                            // +" genre: " +this.state.topArtists.items[i].genres
                             + "</li>";
                     }
                     genres += mTopArtists[i].genres;
@@ -209,12 +208,8 @@ class App extends Component {
                 if (allArtists) {
                     allArtists.innerHTML = string;
                 }
-                // +"genres:</br>rap:"+rap;
                 var msoloGenres = genres.split(",");
                 soloGenre.push(msoloGenres);
-
-////////////////////////////////////////////////////////////////////////
-//CATEGORY PRINT
             }
         }
 
@@ -246,9 +241,11 @@ class App extends Component {
         }
     }
 
-////////////////////////////////////////////////////////////////////////
-//COUNT ARTISTS GENRES AND SAFE THEM TO AN ASSOCIATIVE ARRAY
-// @returnGenres
+
+    /**
+     * count artists genres and sage them to array
+     * @returnGenres
+     **/
     countCategories() {
         var countUp = new Array(this.state.soloGenres.genre[0].name[0].length + 1);
         var filteredGenres = [];
@@ -277,8 +274,10 @@ class App extends Component {
         sessionStorage.setItem(this.state.currentUser.name + "freq", JSON.stringify(this.splitArray(this.state.returnGenres[0], true)));
     }
 
-////////////////////////////////////////////////////////////////////////
-//SAVE USER DATA TO SESSIONSTORAGE
+    /**
+     * save user data to sessionstorage
+     **/
+
     saveAllUserData() {
         var saveToStorage = "";
 
@@ -320,17 +319,12 @@ class App extends Component {
         if (!(sessionStorage[this.state.currentUser.name] === this.state.currentUser.name)) {
             this.state.userOneData.push(a);
         }
-        console.log("USERONEDATA:");
-        console.log(this.state.userOneData[0]);
-
     }
 
     splitArray(array, v) {
         let value = [];
         let i = 0;
 
-
-        // console.log(this.state.returnGenres[0]);
         for (let key in array) {
             value[i] = (v === true ? array[key] : key);
             i++;
@@ -339,8 +333,13 @@ class App extends Component {
         return value;
     }
 
-///////////////////////////////////////////////////////
-//connect to spotify web api and safe data to topArtist
+    updateDimensions() {
+        this.setState({width: window.innerWidth, height: window.innerHeight});
+    }
+
+    /**
+     * connect to the Spotify-Web-Api to change state of topArtist
+     **/
     getTopArtists() {
 
 
@@ -383,20 +382,19 @@ class App extends Component {
 
     }
 
-////
-//// COUNT NUMBER OF LOG INS
+    /**
+     * count login's
+     **/
     countLogIns() {
+        console.log(this.state.currentUser);
         this.setState({logIns: this.state.logIns + 1});
-        console.log("LOG INS:");
-        console.log(this.state.logIns);
-
-
     }
 
     componentDidUpdate() {
 
-///////////////////////////////////////////////////////
-///// PASS DATA AFTER SECOND USER HAS LOGGED IN
+        /**
+         * pass data after the second user has logged in
+         **/
         if (this.state.returnGenres[0] && this.state.callSecondArrrayOnce === false && Object.keys(sessionStorage).length > 5) {
             this.saveAllUserData();
             this.setState({callSecondArrrayOnce: true});
@@ -408,7 +406,6 @@ class App extends Component {
     gameLoop = () => {
 
         setTimeout(() => {
-            const {rotationSpeed} = this.state;
             requestAnimationFrame(this.gameLoop);
             this.setState({rotationSpeed: this.state.rotationSpeed + 0.001});
         }, 1000 / 30);
@@ -416,7 +413,6 @@ class App extends Component {
     }
 
     toggleClasses() {
-        console.log("toggleCLasses");
         this.state.returnGenres[0] ? this.setState({canvasClasses: ""}) : this.setState({canvasClasses: ""});
         this.state.returnGenres[0] ? this.setState({positionClasses: "pos-absolute"}) : this.setState({positionClasses: "pos-absolute"});
     }
@@ -438,6 +434,19 @@ class App extends Component {
 
     switchSpheres() {
 
+
+        let theOtherOne;
+        for (let key in Object.keys(sessionStorage)) {
+            console.log("USSERS" +Object.keys(sessionStorage)[3])
+            theOtherOne = Object.keys(sessionStorage)[3];
+            // if ((Object.keys(sessionStorage)[key].includes("saveFirstUserArtists"))
+            //     && !(Object.keys(sessionStorage)[key].includes(this.state.currentUser.name))
+            // ) {
+            //     secArray = JSON.parse(sessionStorage.getItem(Object.keys(sessionStorage)[key]));
+            // }
+        }
+
+
         if (this.state.returnGenres[0] && Object.keys(sessionStorage).length > 4) {
             this.state.sphereSwitch === false ? this.state.sphereSwitch = true : this.state.sphereSwitch = false;
             this.printArtists(this.state.callSecondSwitch);
@@ -455,83 +464,23 @@ class App extends Component {
             <div className="App">
                 <div className={this.state.themeClasses}>
                     <div className="setTheme">
-                        <p className={"headline-xxl-sub"}><strong>change theme</strong></p>
+                        <p className={"headline-xxl-sub"}><strong>change theme:</strong></p>
                         <ul>
                             <li onClick={() => this.setTheme("rapgod", 0)} className={"setTheme_theme"}>rapgod</li>
-                            <li onClick={() => this.setTheme("summervibes", 1)} className={"setTheme_theme"}>
-                                summervibes
-                            </li>
-                            <li onClick={() => this.setTheme("indiegold", 2)} className={"setTheme_theme"}>indiegold
-                            </li>
-
+                            <li onClick={() => this.setTheme("summervibes", 1)} className={"setTheme_theme"}>summervibes</li>
+                            <li onClick={() => this.setTheme("indiegold", 2)} className={"setTheme_theme"}>indiegold</li>
                         </ul>
                     </div>
-                    <div className="playing">
-                        {/*Now Playing: {this.state.nowPlaying.name}*/}
-                    </div>
-                    <div className="">
-                        <img src={this.state.nowPlaying.albumArt} alt="" width="100px"/>
-                    </div>
-                    <div className="playing">
-                        {/*Favorite Artist: {this.state.topArtists.genres}*/}
-                        {/*<ul id={"allArtists"}>*/}
 
-                        {/*</ul>*/}
 
-                    </div>
-                    <div className={"greetings"}>
-                        {/*<h1 id={"allArtists"} className={"headline-xxl-sub"}></h1>*/}
-                        {!this.state.currentUser.name &&
-                        <div>
-                            {/*<h2 className={"headline-xxl-sub"}>favorite artists:</h2>*/}
-
-                        </div>
-                        }
-                        {(this.state.currentUser.name || this.state.returnGenres[0]) &&
-                        <div>
-                            {/*<h2 className={"headline-xxl-sub"}>favorite artists:</h2>*/}
-                            {/*<h1 id={"allArtists"} className={"headline-xxl-sub"}></h1>*/}
-                            {/*{this.state.returnGenres[0] &&*/}
-                            {/*<h2 id="matches" className={"headline-xxl-sub"}>matches:</h2>*/}
-                            {/*}*/}
-
-                        </div>
-                        }
-                    </div>
                     <div id="genresBox"></div>
                     <div className="blurVignette"></div>
+
+                    <UserInfo positionClasses={this.state.positionClasses}
+                    returnGenres={this.state.returnGenres} currentUser={this.state.currentUser}/>
+
+
                     <div className={this.state.positionClasses}>
-                        <div className={"greetings"}>
-                            <h1 id={"allArtists"} className={"headline-xxl-sub  t-indent"}></h1>
-                            {this.state.returnGenres[0] &&
-                            <h2 id="matches" className={"headline-xxl-sub t-indent"}>matches:<br/></h2>
-                            }
-                        </div>
-                        {!this.state.returnGenres[0] &&
-                        <div>
-                            <h2 className={"headline-xxl-sub t-indent"}>connect through</h2>
-                            <h1 className={"headline-xxl t-indent"}>SOUND</h1>
-                        </div>
-                        }
-
-
-                        {this.state.currentUser.name &&
-                        <h1 className={"headline-xl"}><em className={"emphasized"}>{this.state.currentUser.name}'s</em>
-                            favorite music</h1>
-                        }
-                        {!this.state.currentUser.name &&
-                        <h1 className={"headline-xl"}><em className={"emphasized"}>see your</em> favorite music</h1>
-                        }
-
-                        <h2 className={"headline-lg"}>- done with the Spotify WEB API -</h2>
-                        <h2 className={"headline-lg"}> © marie dvorzak </h2>
-                        <br></br>
-                        {!this.state.returnGenres[0] &&
-                        <a href="http://localhost:8888">
-                            <button onClick={() => this.countLogIns()}><p className={"text-login"}>Login with
-                                Spotify</p></button>
-                        </a>
-                        }
                         {this.state.returnGenres[0] &&
                         <div>
                             <a href="http://localhost:8888">
@@ -540,32 +489,14 @@ class App extends Component {
                             <button className="switchButton" onClick={() => this.switchSpheres()}>switch</button>
                         </div>
                         }
-
-
                     </div>
 
 
-                        <div className={this.state.canvasClasses}>
-                        <Base width={this.state.width} height={this.state.height}
-                        genres={this.state.returnGenres} userOneGenres={this.state.userOneData}
-                        switch={this.state.sphereSwitch} setTheme={this.state.bgTheme}
-                        >
-                        <Camera fov={415}
-                        near={4}
-                        aspect={this.state.width / this.state.height}
-                        far={600}
-                        position={{x: 0, y: 0, z: 40}}></Camera>
-                        <Asteroids></Asteroids>
-                        </Base>
-                        </div>
-
-                    {/* <P5Wrapper sketch={this.state.stateSketch} genres={this.state.returnGenres} userOneGenres={this.state.userOneData}/>*/}
-
-                    {this.state.loggedIn &&
-                    <div>
-
-                    </div>
-                    }
+                    <Canvas width={this.state.width} canvasClasses={this.state.canvasClasses}
+                            height={this.state.height} returnGenres={this.state.returnGenres}
+                            userOneData={this.state.userOneData}
+                            sphereSwitch={this.state.sphereSwitch} bgTheme={this.state.bgTheme}
+                    />
                 </div>
             </div>
         );

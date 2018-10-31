@@ -181,7 +181,7 @@ class Base extends Component {
               let textBox = textGenres[i].getBoundingClientRect();
               if(event.clientX > textBox.left && event.clientX < textBox.right &&
                  event.clientY > textBox.top && event.clientY < textBox.bottom){
-                   console.log(event.clientX + "   " +textBox.left)
+                   // console.log(event.clientX + "   " +textBox.left)
                   // textGenres[i].style.color = "#000";
                    textGenres[i].classList.add("boldGenre");
               }
@@ -195,7 +195,7 @@ class Base extends Component {
         // console.log(bgSphere.geometry.vertices);
         if(this.props.genres){
             this.setState({firstUserGenres: this.props.genres}, this.forceUpdate());
-            console.log("firstusergenres" + this.state.firstUserGenres);
+            // console.log("firstusergenres" + this.state.firstUserGenres);
         }
         if(this.props.userOneGenres){
             this.setState({secondUserGenres: this.props.userOneGenres}, this.forceUpdate());
@@ -342,7 +342,7 @@ class Base extends Component {
                         // groupSpheres.position.z -= 10;
 
 
-                        console.log(groupSpheres.children);
+                        // console.log(groupSpheres.children);
                         // this.scene.add(groupSpheres);
                     }
 
@@ -567,7 +567,6 @@ class Base extends Component {
         // var geo = new THREE.SphereGeometry( 13, 13, 5 );
 
         geo.verticesNeedUpdate = true;
-        console.log(geo);
 
         var customUniforms = {
             time: { // float initialized to 0
@@ -638,7 +637,6 @@ class Base extends Component {
         "#FF6846"
         "#32DFFF"
         if(key === "indietronica"){
-            console.log("!!!!!!" +array[key])
         }
         var color = 0x454347;
         switch(array[key]) {
@@ -662,7 +660,7 @@ class Base extends Component {
         }
 "#ce0093"
         if(same){
-            console.log("same?")
+
             color = 0xce0093;
         }
         // if(key === "indie poptimism"){
@@ -689,7 +687,6 @@ class Base extends Component {
         if(this.props.userOneGenres[0]){
             mesh.position.x += 5.5;
             groupTwo.add(mesh);
-            console.log("group two add mesh")
         }else{group.add(mesh);}
 
 
