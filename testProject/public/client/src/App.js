@@ -497,7 +497,7 @@ class App extends Component {
                     <div className={this.state.positionClasses}>
                         {this.state.returnGenres[0] &&
                         <div className={"switchbuttons"}>
-                            <a href="/loginpage.html">
+                            <a href="/login">
                                 <button onClick={() => this.countLogIns()}>second user login</button>
                             </a>
                             <button className="switchButton" onClick={() => this.switchSpheres()}>switch</button>

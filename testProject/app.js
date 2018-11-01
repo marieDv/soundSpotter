@@ -12,9 +12,10 @@ var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = 'b19325fce844481ba4aba6e7ba89a74c'; // Your client id
-var client_secret = '246a19a174634b0e9d3fbdd6e34aa117'; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var client_id = 'd8d37e95c8bc46a9b2ba4fb2252da58a'; // Your client id
+var client_secret = '2d946e0146e64308a595385529bd93ac'; // Your secret
+// var redirect_uri =('http://localhost:5000/callback/' || 'https://agile-brushlands-48511.herokuapp.com/callback/'); // Your redirect uri
+var redirect_uri ='https://agile-brushlands-48511.herokuapp.com/callback/'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -42,6 +43,10 @@ app.use(function(req, res, next) {
     app.use(express.static('public'))
     .use(express.static('public/client/build'))
     .use(cookieParser());
+
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static('client/build'));
+// }
 
 // app.get('/loginpage.html', function(req, res) {
 //   res.sendFile(global=__dirname, 'public/loginpage.html')
@@ -154,4 +159,4 @@ app.get('/refresh_token', function(req, res) {
 });
 
 console.log('Listening on 8888');
-app.listen(8888);
+app.listen(process.env.PORT || 8888, () => console.log("heroku app is launched"));

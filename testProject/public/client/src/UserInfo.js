@@ -32,8 +32,8 @@ class UserInfo extends Component {
                 </div>
                 {!this.props.returnGenres[0] &&
                 <div>
-                    <h2 className={"headline-xxl-sub t-indent"}>connect through</h2>
-                    <h1 className={"headline-xxl t-indent"}>SOUND</h1>
+                    <h2 className={"headline-xxl-sub "}>connect through</h2>
+                    <h1 className={"headline-xxl "}>SOUND</h1>
                 </div>
                 }
 

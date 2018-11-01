@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="theme-color" content="#000000"><link rel="manifest" href="/manifest.json"><link rel="shortcut icon" href="/favicon.ico"><title>React App</title><link href="/static/css/main.493bf06e.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script><script>var config={apiKey:"AIzaSyCK4HszL_5iBqABdRgSDPP7bC0nsHAlJwE",authDomain:"musicspotter-6d7fa.firebaseapp.com",databaseURL:"https://musicspotter-6d7fa.firebaseio.com",projectId:"musicspotter-6d7fa",storageBucket:"",messagingSenderId:"36606621766"};firebase.initializeApp(config)</script><script type="javascript" src="../src/threejs/perlin.js"></script><script type="x-shader/x-vertex" id="vertexShader">varying vec2 vUv;
+
+void main() {
+
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+}</script><script type="x-shader/x-vertex" id="fragmentShader">uniform vec3 color1;
+  uniform vec3 color2;
+  varying vec2 vUv;
+  void main() {
+    gl_FragColor = vec4(mix(color1, color2, vUv.y),1.0);
+  }</script><script type="text/javascript" src="/static/js/main.5dab3796.js"></script></body></html>
