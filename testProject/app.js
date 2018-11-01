@@ -14,8 +14,8 @@ var cookieParser = require('cookie-parser');
 
 var client_id = 'd8d37e95c8bc46a9b2ba4fb2252da58a'; // Your client id
 var client_secret = '2d946e0146e64308a595385529bd93ac'; // Your secret
-// var redirect_uri =('http://localhost:5000/callback/' || 'https://agile-brushlands-48511.herokuapp.com/callback/'); // Your redirect uri
-var redirect_uri ='https://agile-brushlands-48511.herokuapp.com/callback/'; // Your redirect uri
+// var redirect_uri ='http://localhost:5000/callback'; // Your redirect uri
+var redirect_uri ='https://sound-spotter.herokuapp.com/callback/'; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters

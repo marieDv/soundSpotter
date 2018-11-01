@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Archivo:400,400i,600,600i');
+
+a {
+
+  text-decoration: none;
+}
+img {
+  width: 92px;
+}
 .bg {
 
 
@@ -6,6 +15,7 @@
   background:linear-gradient(to bottom, #000328 40%, #000000 100%);
 
   background: linear-gradient(to bottom, #ded6c7 40%, #71d1fd 100%);
+  background: linear-gradient(180deg,#d06d8f 20%,#9c5672 55%,#592865);
   height:100vh;
   width:100%;
   position: absolute;
@@ -23,7 +33,8 @@
 .rapgod {
   background: linear-gradient(to bottom, #E91E63 60%, #004464 100%);
   background: linear-gradient(to bottom, #E91E63 50%, #d0467c 75%, #652862 100%);
-  background: #1d1d1d;
+  background: linear-gradient(180deg,#d06d8f 20%,#9c5672 55%,#592865);
+  /*background: #1d1d1d;*/
 }
 
 
@@ -82,9 +93,13 @@ div, button {
 }
 
 .text-login {
+  font-weight: 400;
+  font-family: "Archivo", sans-serif;
+  margin: -3px 0;
+  font-size: 0.6rem;
   text-decoration: none;
-  font-weight: 800;
-  margin: 8px 0 8px 0;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
 }
 
 
@@ -116,13 +131,13 @@ div, button {
   top: 29vh;
 }
 .headline-xxl {
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 18px;
+  font-family: "Archivo Black", sans-serif;
+  /* letter-spacing: 1px; */
   color: #3f3f3f;
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 800;
   margin-top: 62px;
-  margin-top: 48px;
+  margin-top: 29px;
   line-height: 0;
 }
 
@@ -130,13 +145,13 @@ div, button {
   margin-left: -19%;
 }
 .headline-xxl-sub {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Archivo", sans-serif;
   letter-spacing: 10px;
   color: #3f3f3f;
-  font-size:1rem;
+  font-size: 0.6rem;
+  text-transform: uppercase;
   font-weight: 400;
-  margin-bottom: 10px;
-  text-align: left;
+  text-indent: 5px;
 }
 .headline-xl {
   font-family: "Helvetica Neue", sans-serif;
@@ -147,18 +162,18 @@ div, button {
   text-shadow: #c4c4c4 0px 0px 2px;
 }
 .headline-lg {
-  font-family: "Libre Baskerville", sans-serif;
-  letter-spacing: 5px;
-  color: #ffffff;
-  font-weight: 200;
-  font-size: 0.7rem;
+  font-family: "Archivo", sans-serif;
+  letter-spacing: 1px;
+  font-size: .7rem;
+  line-height: 0.5;
 
 }
 
 .favArtist {
   font-size: 1rem;
-  letter-spacing: 3px;
-  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  font-family: "Archivo", sans-serif;
   list-style: none;
   line-height: 1.1;
 }
