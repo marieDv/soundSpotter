@@ -35,8 +35,21 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
-   .use(cookieParser());
+app.use(function(req, res, next) {
+  console.log(req.originalUrl)
+    next()
+})
+    app.use(express.static('public'))
+    .use(express.static('public/client/build'))
+    .use(cookieParser());
+
+// app.get('/loginpage.html', function(req, res) {
+//   res.sendFile(global=__dirname, 'public/loginpage.html')
+// })
+//
+// app.get('/thecoolpage', function (req, res) {
+//   res.sendFile(global=__dirname, 'public/client/build')
+// })
 
 app.get('/login', function(req, res) {
 
@@ -58,15 +71,13 @@ app.get('/login', function(req, res) {
 
 app.get('/callback', function(req, res) {
 
-  // your application requests refresh and access tokens
-  // after checking the state parameter
 
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if (state === null || state !== storedState) {
-    res.redirect('/http://localhost:3000/#' +
+    res.redirect('#' +
       querystring.stringify({
         error: 'state_mismatch'
       }));
@@ -103,7 +114,7 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://localhost:3000/#' +
+        res.redirect('/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
