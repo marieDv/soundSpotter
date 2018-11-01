@@ -9,5 +9,8 @@
     "jscs": "^3.0.7",
     "querystring": "~0.2.0",
     "request": "~2.83.0"
+  },
+  "engines": {
+    "node": "v8.10.0"
   }
 }
