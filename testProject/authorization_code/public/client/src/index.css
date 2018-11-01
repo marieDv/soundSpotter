@@ -242,3 +242,9 @@ span.genre {
 .tomato {
   font-size: 1.9rem;
 }
+
+.switchbuttons {
+  margin-bottom: 20vh;
+  position: absolute;
+  width: 100%;
+}

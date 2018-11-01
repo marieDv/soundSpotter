@@ -36,6 +36,7 @@ class App extends Component {
             count: 0,
             secUserLoggedIn: false,
             currentUser: {name: ""},
+            displayedUser: {name: ""},
             logIns: 0,
             canvasClasses: "canvas-blur",
             themeClasses: "bg",
@@ -348,6 +349,9 @@ class App extends Component {
                 this.setState({
                     currentUser: {
                         name: response.display_name,
+                    },
+                    displayedUser: {
+                        name: response.display_name,
                     }
 
                 });
@@ -437,8 +441,21 @@ class App extends Component {
 
         let theOtherOne;
         for (let key in Object.keys(sessionStorage)) {
-            console.log("USSERS" +Object.keys(sessionStorage)[3])
-            theOtherOne = Object.keys(sessionStorage)[3];
+            theOtherOne = (Object.keys(sessionStorage)[2]);
+            console.log("USSERS" +theOtherOne +this.state.currentUser.name)
+            if(Object.keys(sessionStorage)[2].includes(this.state.currentUser.name)){
+                console.log("SAME");
+                this.setState({displayedUser: {
+                    name: "CHANGED",
+                }});
+            }else{
+                console.log("CURRENTUSER" +this.state.currentUser.name);
+                this.setState({displayedUser: {
+                    name: this.state.currentUser.name,
+                }});
+
+            }
+
             // if ((Object.keys(sessionStorage)[key].includes("saveFirstUserArtists"))
             //     && !(Object.keys(sessionStorage)[key].includes(this.state.currentUser.name))
             // ) {
@@ -477,12 +494,12 @@ class App extends Component {
                     <div className="blurVignette"></div>
 
                     <UserInfo positionClasses={this.state.positionClasses}
-                    returnGenres={this.state.returnGenres} currentUser={this.state.currentUser}/>
+                    returnGenres={this.state.returnGenres} currentUser={this.state.displayedUser}/>
 
 
                     <div className={this.state.positionClasses}>
                         {this.state.returnGenres[0] &&
-                        <div>
+                        <div className={"switchbuttons"}>
                             <a href="http://localhost:8888">
                                 <button onClick={() => this.countLogIns()}>second user login</button>
                             </a>
