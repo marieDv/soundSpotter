@@ -1,3 +1,8 @@
+/**
+ * ASTEROIDS
+ * decorative flying stones
+ **/
+
 import React, { Component } from 'react';
 import * as THREE from 'three';
 import PropTypes from 'prop-types';

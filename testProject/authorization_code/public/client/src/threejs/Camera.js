@@ -1,7 +1,10 @@
+/**
+ * CAMERA
+ * setup in Base.js
+ **/
 import React, { Component } from 'react';
 import * as THREE from 'three';
 import PropTypes from 'prop-types';
-var OrbitControls = require('three-orbit-controls')(THREE);
 
 class PerspectiveCamera extends Component {
     constructor(props) {
@@ -17,8 +20,6 @@ class PerspectiveCamera extends Component {
 
         this.updateThree(this.props);
         this._render();
-
-        // window.addEventListener( 'resize', onWindowResize(this), false );
 
     }
 

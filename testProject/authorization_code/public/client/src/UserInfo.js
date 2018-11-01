@@ -18,9 +18,16 @@ class UserInfo extends Component {
             <div className={this.props.positionClasses}>
 
                 <div className={"greetings"}>
-                    <h1 id={"allArtists"} className={"headline-xxl-sub  t-indent"}></h1>
+                    {this.props.currentUser.name &&
+                    <h1 className={"favArtist"}><em className={"emphasized"}>{this.props.currentUser.name}'s</em>
+                        favorite artists:</h1>
+                    }
+                    {!this.props.currentUser.name &&
+                    <h1 className={"favArtist"}><em className={"emphasized"}>see your</em> favorite music</h1>
+                    }
+                    <h1 id={"allArtists"} className={"headline-xxl-sub  "}></h1>
                     {this.props.returnGenres[0] &&
-                    <h2 id="matches" className={"headline-xxl-sub t-indent"}>matches:<br/></h2>
+                    <h2 id="matches" className={"headline-xxl-sub "}><br/></h2>
                     }
                 </div>
                 {!this.props.returnGenres[0] &&
@@ -31,13 +38,7 @@ class UserInfo extends Component {
                 }
 
 
-                {this.props.currentUser.name &&
-                <h1 className={"headline-xl"}><em className={"emphasized"}>{this.props.currentUser.name}'s</em>
-                    favorite music</h1>
-                }
-                {!this.props.currentUser.name &&
-                <h1 className={"headline-xl"}><em className={"emphasized"}>see your</em> favorite music</h1>
-                }
+
 
                 <h2 className={"headline-lg"}>- done with the Spotify WEB API -</h2>
                 <h2 className={"headline-lg"}> © marie dvorzak </h2>

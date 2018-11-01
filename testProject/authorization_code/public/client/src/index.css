@@ -156,8 +156,8 @@ div, button {
 }
 
 .favArtist {
-  font-size: 1.4rem;
-  letter-spacing: 6px;
+  font-size: 1rem;
+  letter-spacing: 3px;
   font-weight: 700;
   list-style: none;
   line-height: 1.1;
@@ -173,7 +173,7 @@ div, button {
   text-align: left;
   bottom: 6vh;
   /*right:4vh;*/
-  left: 12%;
+  left: 4%;
   bottom: 26vh;
 }
 .pos-absolute-start {

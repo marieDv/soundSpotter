@@ -1,3 +1,8 @@
+/**
+ * APP
+ * root component of the React Application - contains functions for the fetching of the Spotify data and passes it to
+ * the Three.js model - also responsible for the user-managment(saving of data to the session-storage)
+ **/
 import React, {Component} from 'react';
 import './App.css';
 import sketch from './sketches/sketch';
@@ -439,28 +444,18 @@ class App extends Component {
     switchSpheres() {
 
 
-        let theOtherOne;
+        let tempString;
         for (let key in Object.keys(sessionStorage)) {
-            theOtherOne = (Object.keys(sessionStorage)[2]);
-            console.log("USSERS" +theOtherOne +this.state.currentUser.name)
-            if(Object.keys(sessionStorage)[2].includes(this.state.currentUser.name)){
-                console.log("SAME");
+            tempString = (Object.keys(sessionStorage)[0]);
+            if(this.state.displayedUser.name === this.state.currentUser.name){
                 this.setState({displayedUser: {
-                    name: "CHANGED",
+                    name: tempString,
                 }});
             }else{
-                console.log("CURRENTUSER" +this.state.currentUser.name);
                 this.setState({displayedUser: {
                     name: this.state.currentUser.name,
                 }});
-
             }
-
-            // if ((Object.keys(sessionStorage)[key].includes("saveFirstUserArtists"))
-            //     && !(Object.keys(sessionStorage)[key].includes(this.state.currentUser.name))
-            // ) {
-            //     secArray = JSON.parse(sessionStorage.getItem(Object.keys(sessionStorage)[key]));
-            // }
         }
 
 
