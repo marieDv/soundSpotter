@@ -7,3 +7,11 @@ This app provides two user modes. The first one is the “Single-User”, which 
 
 ## Languages: 
 It was quite the challenge to develop the app with React and Three.js, since I had to create a React strucutre that provided different components for each part of the Three.js model. The combination with Node.js made the code even more complex. But I learned a lot about the structuring of bigger projects through it.
+
+### setup
+
+cd ./authorization_code 
+node app.js
+
+cd ./authorization_code/public/client
+npm start
