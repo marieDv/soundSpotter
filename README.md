@@ -1,5 +1,5 @@
 # Sound-Spotter
-## development version currently launched at: https://agile-brushlands-48511.herokuapp.com/
+## development version currently launched at: https://sound-spotter.herokuapp.com/
 
 The Spotify Sound Spotter is a project I realized during my generative Art and Design course. The assignment required the creation of a generative artwork, that represents a data model. After some intense research I decided to fetch the Spotify-Web-API and visualize personal user data through a spherical Three.js object. 
 
